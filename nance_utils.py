@@ -7,7 +7,6 @@ fr_dict = {}
 def get_fr_from_ws():
     ws = websocket.create_connection("wss://fstream.binance.com/stream?streams=!markPrice@arr")
 
-    # ws.send("your_message")
     message = ws.recv()
     ws.close()
     
@@ -65,7 +64,7 @@ async def get_the_oi_hist(symbol, timeframe):
     results = []
 
     now = int(datetime.datetime.now().timestamp() * 1000)
-    # Subtract 3 days in milliseconds
+
     min_time = now - (3 * 24 * 60 * 60 * 1000)
     async with aiohttp.ClientSession() as session:
         while True:
